@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+    postgres:
+        container_name: postgres
+        image: postgres:13-alpine
+        environment:
+            POSTGRES_USER: quarkus
+            POSTGRES_PASSWORD: 123
+        ports:
+        - '15432:5432'
+        networks:
+        - postgres-network
+      
+    pgadmin:
+        container_name: pgadmin
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin
+            PGADMIN_DEFAULT_PASSWORD: 123
+        ports:
+        - '16432:80'
+        depends_on:
+        - postgres
+        networks:
+        - postgres-network
+
+networks: 
+  postgres-network:
+    driver: bridge

@@ -1,0 +1,17 @@
+@host=http://localhost:8080/api
+
+###
+
+{{host}}
+
+###
+
+
+POST {{host}}
+Content-Type: application/json
+
+{
+    "title":"One",
+    "completed":true,
+    "order":1
+}
